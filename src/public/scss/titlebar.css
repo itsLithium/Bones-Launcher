@@ -1,0 +1,106 @@
+.mainApp {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #343B48;
+  box-sizing: none;
+  -webkit-box-sizing: none;
+}
+
+.mainApp > .topBar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 30px;
+  background-color: #1B1D23;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  position: sticky;
+}
+
+.topBar > .titleBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 55em;
+  -webkit-app-region: drag;
+}
+
+.titleBar > img {
+  margin-left: 10px;
+}
+
+.titleBar > .title {
+  color: #949AA7;
+  margin-left: 10px;
+  width: 100%;
+  line-height: 30px;
+  margin-top: 5px;
+  padding-bottom: 5px;
+}
+
+.titleBar > .titleBarBtns {
+  display: flex;
+  flex-direction: row;
+  width: 20px;
+  height: 40px;
+}
+
+.titleBarBtns > .topBtn {
+  width: 40px;
+  height: 30px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 15px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.titleBarBtns > .topBtn:hover {
+  background-color: #272C36;
+}
+
+.titleBarBtns > .closeBtn:hover {
+  background-color: red;
+}
+
+.titleBarBtns > .topBtn:active {
+  background-color: #ef4089;
+}
+
+.titleBarBtns > .minimizeBtn {
+  background-image: url("../../../assets/icons/minimize.png");
+}
+
+.titleBarBtns > .maximizeBtn {
+  background-image: url("../../../assets/icons/maximize.png");
+}
+
+.titleBarBtns > .restoreBtn {
+  background-image: url("../../../assets/icons/restore.png");
+}
+
+.titleBarBtns > .closeBtn {
+  background-image: url("../../../assets/icons/close.png");
+}
+
+.mainApp > .contentArea {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}/*# sourceMappingURL=titlebar.css.map */

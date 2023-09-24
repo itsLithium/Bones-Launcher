@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bones Launcher</title>
+    <link rel="stylesheet" href="scss/styles.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./scss/titlebar.css">
+    <script defer src="../js/appFunctions.js"></script>
+    <script defer src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  </head>
+  <body>
+
+    <div class="mainApp sticky">
+      <div class="topBar">
+        <div class="titleBar">
+          <img src="../../assets/skeletonskull.svg" alt="" height="15px">
+          <div class="title">
+            Bones Launcher
+          </div>
+        </div>
+        <div class="titleBarBtns ms-auto">
+          <button id="minimizeBtn" class="topBtn minimizeBtn" title="Minimize"></button>
+          <button id="maxResBtn" class="topBtn maximizeBtn" title="Maximize"></button>
+          <button id="closeBtn" class="topBtn closeBtn" title="Close"></button>
+        
+        </div>
+      </div>
+
+    </div>
+    
+
+    <div id="settingsArea" class="settingsArea hide">
+      <button class="backbtn" id="stbackButton" type="button"><i class="bi bi-caret-left-fill"></i>Back</button>
+      <div class="centeredContent">
+        <span class="block stg-text">RAM allocation</span>
+        <span class="stg-text fw-bold">RAM</span>
+        <input id="minRam" class="ramInput" type="text" placeholder="minRam" value="4G">
+        <input id="maxRam" class="ramInput" type="text" placeholder="maxRam" value="6G">
+        <button id="applyRam" class="block outlinedbtn horizontal-center mt-3">Apply</button>
+        <button class="block premiumBtn ">Log In Premium [WIP]</button>
+      </div>
+    </div>
+
+    <div id="contentArea" class="contentArea">
+      <div class="main-content">
+        <button class="button account-button"></button>
+        <section id="play">
+          
+          <div class="brand-logo"><img src="../../assets/logo.png" alt=""></div>
+          
+        </section>
+        <!-- <section id="news">
+        </section> -->
+        <div class="bottom-bar">
+          <input spellcheck="false" id="username" type="text" class="textbar vertical-center" placeholder="Username">
+          <!-- <div class="btn-group">
+            <button aria-expanded="false" data-bs-toggle="dropdown" type="button" class="textbar-btn left230 vertical-center dropdown-toggle">Version<i class="bi bi-caret-up-fill" style="float:right;"></i></button>
+          
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div> -->
+
+          <div class="dropup left230 vertical-center">
+            <!-- <i class="bi bi-caret-up-fill" style="float:right;"></i> -->
+            <button id="dropdown-button" type="button" class="textbar-btn" data-bs-toggle="dropdown" aria-expanded="false">
+              Version
+            </button>
+            <ul id="dropdown-menu" class="dropdown-menu">
+            </ul>
+          </div>
+          
+          <div class="btn-container">
+            <div class="btn-hshadow">
+              <div class="btn-vshadow2">
+                <div class="btn-vshadow">
+                    <button id="play-btn" type="button" class="play-btn">
+                    <span id="play-txt" class="btn-txt">Play</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stg-container vertical-center">
+            <button id="settings-btn" class="settings-btn ripple"><i class="bi bi-gear-fill"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>   
+
+    
+    
+  </body>
+</html>

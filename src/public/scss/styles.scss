@@ -1,0 +1,509 @@
+// Override Bootstrap's Sass default variables
+//
+// Nearly all variables in Bootstrap are written with the `!default` flag.
+// This allows you to override the default values of those variables before
+// you import Bootstrap's source Sass files.
+//
+// Overriding the default variable values is the best way to customize your
+// CSS without writing _new_ styles. For example, you can either change
+// `$body-color` or write more CSS that override's Bootstrap's CSS like so:
+// `body { color: red; }`.
+
+
+//
+// Bring in Bootstrap
+//
+
+// Option 1
+//
+// Import all of Bootstrap's CSS
+
+// @import "../../node_modules/bootstrap/scss/bootstrap";
+
+// Option 2
+//
+// Place variable overrides first, then import just the styles you need. Note that some stylesheets are required no matter what.
+
+// Toggle global options
+$enable-gradients: true;
+$enable-shadows: true;
+
+$offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
+
+// Customize some defaults
+$body-color: #2C313C;
+$body-bg: #fff;
+$main-color: #ef4089;
+$text-color: #949AA7;
+$topbar-color: #1B1D23;
+$sb-color: #272C36;
+$border-color: #343B48;
+$border-radius: .4rem;
+$success: #7952b3;
+
+//Required
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/utilities";
+@import "../../../node_modules/bootstrap/scss/root";
+@import "../../../node_modules/bootstrap/scss/reboot";
+
+@import "../../../node_modules/bootstrap/scss/type";
+// @import "n../../ode_modules/bootstrap/scss/images";
+@import "../../../node_modules/bootstrap/scss/containers";
+@import "../../../node_modules/bootstrap/scss/grid";
+// @import "../../bootstrap/scss/tables";
+// @import "../../bootstrap/scss/forms";
+@import "../../../node_modules/bootstrap/scss/buttons";
+@import "../../../node_modules/bootstrap/scss/transitions";
+@import "../../../node_modules/bootstrap/scss/dropdown";
+@import "../../../node_modules/bootstrap/scss/button-group";
+@import "../../../node_modules/bootstrap/scss/nav";
+@import "../../../node_modules/bootstrap/scss/navbar"; // Requires nav
+@import "../../../node_modules/bootstrap/scss/card";
+@import "../../../node_modules/bootstrap/scss/breadcrumb";
+@import "../../../node_modules/bootstrap/scss/accordion";
+@import "../../../node_modules/bootstrap/scss/pagination";
+@import "../../../node_modules/bootstrap/scss/badge";
+@import "../../../node_modules/bootstrap/scss/alert";
+@import "../../../node_modules/bootstrap/scss/progress";
+@import "../../../node_modules/bootstrap/scss/list-group";
+@import "../../../node_modules/bootstrap/scss/close";
+// @import "../../node_modules/bootstrap/scss/toasts";
+@import "../../../node_modules/bootstrap/scss/modal"; // Requires transitions
+// @import "../../node_modules/bootstrap/scss/tooltip";
+@import "../../../node_modules/bootstrap/scss/popover";
+// @import "../../node_modules/bootstrap/scss/carousel";
+// @import "../../node_modules/bootstrap/scss/spinners";
+@import "../../../node_modules/bootstrap/scss/offcanvas"; // Requires transitions
+// @import "../../node_modules/bootstrap/scss/placeholders";
+
+// Helpers
+// @import "../../node_modules/bootstrap/scss/helpers";
+
+// Utilities
+@import "../../../node_modules/bootstrap/scss/utilities/api";
+
+
+// Icons
+//@import "../../node_modules/bootstrap-icons/font/bootstrap-icons";
+
+// Custom title bar.
+//@import "titlebar";
+//
+// Custom styles
+
+//@import "./titlebar";
+
+//
+
+@import "icon-list";
+
+body {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: $body-color;
+  color: $text-color;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #555;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #131313;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #131313;
+}
+
+.dropup .hide-toggle.dropdown-toggle::after {
+  display: none !important;
+}
+
+.play-btn {
+    background-color: $main-color;
+    color: #fff;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border: none;
+    border-radius: 0px;
+}
+.btn-txt {
+  font-size: 15px;
+}
+
+.btn-container{
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  // border: 3px solid black;
+}
+
+.btn-container:hover{
+  .play-btn{
+    background-color: #f4478f;
+  }
+  .btn-txt {
+    font-size: 17px;
+  }
+}
+
+.btn-container:active{
+  // border-color: white;
+  .btn-txt{
+    font-size: 16px;
+  }
+
+  // .btn-vshadow{
+  //   border-color: #fff;
+  // }
+  // .btn-vshadow2 {
+  //   border-color: #fff;
+  // }
+  // .btn-hshadow {
+  //   border-color: #fff;
+  // }
+}
+
+.btn-vshadow {
+  padding-bottom: 4px;
+  background-color: #b23a64;
+  //border-bottom: 3px solid black;
+}
+
+.btn-vshadow2{
+  background-color: #ef5495;
+  padding-top: 4px;
+  //border-top: 3px solid black;
+}
+
+.btn-hshadow {
+  padding-left: 4px;
+  padding-right: 4px;
+  background-color: #bc386f;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.banner{
+  overflow-y: hidden;
+  overflow-x: hidden;
+  width: auto;
+  height: 600;
+}
+
+.banner > img {
+  object-fit: contain;
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+}
+
+section > h1 {
+  font-size: 60px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 14px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  background-color: #272C36;
+  max-height: 200px;
+  overflow-y: auto;
+  min-width: 160px;
+  max-width: 260px;
+  border-radius: 4px;
+}
+
+
+.dropdown-menu .dropdownitem {
+  background-color: #272C36;
+  color: $text-color;
+  font-size: 14px;
+  padding: 6px 12px;
+}
+
+.dropdown-menu .dropdownitem:hover {
+  color: $main-color;
+  background-color: #34393f;
+  border-color: none;
+  box-shadow: none;
+}
+
+.hide{
+  display:none
+}
+
+.account-button {
+	position: fixed;
+	height: 30px;
+	bottom: 15px;
+	right: 15px;
+	background: #393E46;
+	border-radius: 5px;
+	color: #EEEEEE;
+	padding: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-right: 8px;
+	box-shadow: 0 0 10px #0f1113;
+} 
+
+.bottom-bar {
+  background-color: $topbar-color;
+  position: sticky;
+  bottom: 0px;
+  height: 80px;
+  width: 100%;
+  padding-left: 20px;
+}
+
+.textbar {
+  background-color: #272C36;
+  padding-left: 10px;
+  color: $text-color;
+  margin-left: 20px;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+}
+
+.textbar::placeholder{
+  color: $text-color;
+}
+
+.textbar:focus {
+  background-color: #272C36;
+  border: 3px solid $main-color;
+}
+
+.textbar:hover{
+  border: 1px solid #424b5c;
+}
+
+.left230{
+  left: 230px;
+}
+
+.textbar-btn {
+  width: 195px;
+  text-align: start;
+  padding-left: 10px;
+  border: none;
+  border-radius: 25px;
+  background-color: #272C36;
+  color: $text-color;
+  outline: none;
+}
+
+.textbar-btn:focus{
+  border: 3px solid $main-color;
+}
+
+.textbar-btn:hover{
+  border: 1px solid #424b5c;
+}
+
+.versionsDropdown {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.versionsDropdown > a{
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.versionsDropdown > a:hover{ background-color: #ddd;}
+
+.showed {display:block;}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.stg-container{
+  right: 15px;
+}
+
+.settings-btn{
+  color: $text-color;
+  border: none;
+  padding: 10px;
+  background-color: transparent;
+  text-align: center;
+}
+
+.settings-btn > i {
+  font-size: 25px;
+}
+
+.ripple:hover > i{
+  color: $main-color;
+  font-size: 27px;
+}
+
+.ripple:active > i {
+  font-size: 25px;
+}
+
+.main-content{
+  padding-top: 50px;
+}
+
+
+.settingsArea{
+  padding-top: 30px;
+}
+
+.centeredContent{
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid $border-color;
+    border-radius: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 90px;
+    padding-bottom: 10px;
+    align-items: center;
+}
+
+.backbtn{
+  position: absolute;
+  color: $text-color;
+  border: none;
+  padding: 10px;
+  background-color: transparent;
+  text-align: center;
+  font-weight: bold;
+
+}
+
+.horizontal-center{
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.outlinedbtn{
+  color: $text-color;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: transparent;
+  width: auto;
+  border: none;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  text-align: center;
+}
+
+.outlinedbtn:hover{
+  color: $main-color;
+  border-bottom: 2px solid $main-color;
+}
+.outlinedbtn:active{
+  color: $sb-color;
+  border-bottom: 2px solid $sb-color;
+}
+
+.premiumBtn{
+  transform: translateX(5%);
+  color: $text-color;
+  margin-top: 90px;
+  padding-left: 25px;
+  padding-right: 25px;
+  background-color: transparent;
+  width: auto;
+  border: none;
+  font-weight: bold;
+  border-bottom: 2px solid transparent;
+  text-align: center;
+}
+
+
+.stg-text{
+  color: $text-color;
+}
+
+.ramInput {
+  margin-top: 10px;
+  width: 70px;
+  text-align: start;
+  padding-left: 10px;
+  border: 1px solid $main-color;
+  border-radius: 25px;
+  background-color: #272C36;
+  color: $text-color;
+  outline: none;
+}
+
+.ramInput:focus{
+  border: 3px solid $main-color;
+}
+
+.ramInput:hover{
+  border: 2px solid $main-color;
+}
+
+.premiumBtn:hover{
+  color: $main-color;
+  border-bottom: 2px solid $main-color;
+}
+
+.block{
+  display: block;
+}
