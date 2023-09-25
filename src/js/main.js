@@ -5,38 +5,11 @@ const keytar = require('keytar');
 const ipc = ipcMain
 const os = require("os");
 
+let mainWindow
+
 userDirectory = os.homedir();
 
-//MC LAUNCH
 
-const runMC = (token, version, minRam, maxRam) => {
-  const launcher = new Client();
-  let opts = {
-      clientPackage: null,
-      // Simply call this function to convert the msmc Minecraft object into a mclc authorization object
-      authorization: token,
-      root: userDirectory + "/AppData/Roaming/.minecraft",
-      version: {
-          number: version,
-          type: "release"
-      },
-      memory: {
-          max: maxRam,
-          min: minRam
-      }  
-  };
-  console.log("Starting!");
-  launcher.launch(opts);
-  
-  launcher.on('debug', (e) => console.log(e));
-  launcher.on('data', (e) => console.log(e));
-  launcher.on('progress', (e) => console.log(e));
-}
-
-const login = (user,version, minRam, maxRam) => {
-    Authenticator.getAuth(user).then(token => runMC(token, version, minRam, maxRam))
-  
-}
 
 
 
@@ -68,6 +41,48 @@ const createWindow = async () => {
 
   });
 
+  //MC LAUNCH
+
+  const runMC = (token, version, minRam, maxRam) => {
+    const launcher = new Client();
+    let opts = {
+        clientPackage: null,
+        // Simply call this function to convert the msmc Minecraft object into a mclc authorization object
+        authorization: token,
+        root: userDirectory + "/AppData/Roaming/.minecraft",
+        version: {
+            number: version,
+            type: "release"
+        },
+        memory: {
+            max: maxRam,
+            min: minRam
+        }  
+    };
+    console.log("Starting!");
+    launcher.launch(opts).then(() => launched);
+  
+    
+    //launcher.on('debug', (e) => console.log(e));
+    
+    launcher.on('progress', (e) => launched(e));
+    //launcher.on('progress', (e) => console.log(e));
+    
+  }
+  
+  const login = (user,version, minRam, maxRam) => {
+      Authenticator.getAuth(user).then(token => runMC(token, version, minRam, maxRam))
+    
+  }
+  
+  const launched = (data) => {
+    
+    if(data.task == data.total){
+      console.log("cargue " + data.task)
+      mainWindow.webContents.send('loaded')
+    }
+  }
+
   let inputValue = await keytar.getPassword('bones-launcher', 'username')
   let versionValue = await keytar.getPassword('bones-launcher', 'version')
   let minRamValue = await keytar.getPassword('bones-launcher', 'minRam')
@@ -93,7 +108,7 @@ const createWindow = async () => {
     await keytar.setPassword('bones-launcher', 'maxRam', arg.maxRam)
     login(arg.user, arg.version, arg.minRam, arg.maxRam)
 
-    event.sender.send('loaded');
+    //event.sender.send('loaded');
     console.log(arg.user)
   })
 

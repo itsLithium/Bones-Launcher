@@ -10158,6 +10158,38 @@ body {
   font-size: 17px;
 }
 
+.btn-container-disabled {
+  cursor: none;
+}
+.btn-container-disabled .play-btn {
+  background-color: #aaaaaa;
+}
+.btn-container-disabled .btn-vshadow {
+  background-color: #888888;
+}
+.btn-container-disabled .btn-vshadow2 {
+  background-color: #bbbbbb;
+}
+.btn-container-disabled .btn-hshadow {
+  background-color: #999999;
+}
+
+.btn-container-disabled:hover {
+  cursor: none;
+}
+.btn-container-disabled:hover .play-btn {
+  background-color: #aaaaaa;
+}
+.btn-container-disabled:hover .btn-vshadow {
+  background-color: #888888;
+}
+.btn-container-disabled:hover .btn-vshadow2 {
+  background-color: #bbbbbb;
+}
+.btn-container-disabled:hover .btn-hshadow {
+  background-color: #999999;
+}
+
 .btn-container:active .btn-txt {
   font-size: 16px;
 }

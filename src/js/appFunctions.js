@@ -161,16 +161,19 @@ playbtn.addEventListener("click",() => {
         version = document.getElementById('dropdown-button').textContent;
         if(!minRam || !maxRam){
             ipc.send('play', {user: user, version: version, minRam: "2G", maxRam: "4G",})
-            document.getElementById('play-txt').textContent = "Loading";
         }else{
             ipc.send('play', {user: user, version: version, minRam: minRam, maxRam: maxRam,})
-            document.getElementById('play-txt').textContent = "Loading";
         }
+        document.getElementById('play-txt').textContent = "Loading";
+        document.getElementById('btn-container').classList.add('btn-container-disabled')
+        playbtn.disabled = true;
     }
 });
 
 ipc.on('loaded', () => {
     document.getElementById('play-txt').textContent = "Play";
+    document.getElementById('btn-container').classList.remove('btn-container-disabled')
+    playbtn.disabled = false;
 })
 
 

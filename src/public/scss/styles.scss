@@ -147,6 +147,7 @@ body {
     border: none;
     border-radius: 0px;
 }
+
 .btn-txt {
   font-size: 15px;
 }
@@ -168,6 +169,41 @@ body {
     font-size: 17px;
   }
 }
+
+.btn-container-disabled {
+  cursor:none;
+
+  .play-btn{
+    background-color: #aaaaaa;
+  }
+  .btn-vshadow {
+    background-color: #888888;
+  }
+  .btn-vshadow2{
+    background-color: #bbbbbb;
+  }
+  .btn-hshadow{
+    background-color: #999999;
+  }
+}
+
+.btn-container-disabled:hover {
+  cursor:none;
+
+  .play-btn{
+    background-color: #aaaaaa;
+  }
+  .btn-vshadow {
+    background-color: #888888;
+  }
+  .btn-vshadow2{
+    background-color: #bbbbbb;
+  }
+  .btn-hshadow{
+    background-color: #999999;
+  }
+}
+
 
 .btn-container:active{
   // border-color: white;

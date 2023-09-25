@@ -1,8 +1,8 @@
 {
   "name": "bones-launcher",
-  "productName": "bones-launcher",
-  "version": "1.0.0",
-  "description": "My Electron application description",
+  "productName": "Bones Launcher",
+  "version": "1.0.1",
+  "description": "A lightweight, virus-free Minecraft launcher, where you can play with your premium account as well as play offline (pirate), presented as an alternative to the classic official launcher, or pirate launchers that contain viruses.",
   "main": "src/js/main.js",
   "scripts": {
     "start": "electron-forge start",
@@ -30,6 +30,7 @@
     "nodemon": "^3.0.1"
   },
   "devDependencies": {
+    "@appnest/readme": "^1.2.7",
     "@electron-forge/cli": "^6.4.2",
     "@electron-forge/maker-deb": "^6.4.2",
     "@electron-forge/maker-rpm": "^6.4.2",
