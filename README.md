@@ -1,6 +1,5 @@
   <img src="./assets/logo2.png" alt="Logo" width="auto" height="auto" />
 </p>
-<h1 align="center">bones-launcher</h1>
 <p align="center">
   <b>A lightweight, virus-free Minecraft launcher, where you can play with your premium account as well as play offline (pirate), presented as an alternative to the classic official launcher, or pirate launchers that contain viruses.</b></br>
   <sub><sub>
