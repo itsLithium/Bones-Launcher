@@ -1,4 +1,4 @@
-  <img src="./assets/logo.png" alt="Logo" width="auto" height="auto" />
+  <img src="./assets/logo2.png" alt="Logo" width="auto" height="auto" />
 </p>
 <h1 align="center">bones-launcher</h1>
 <p align="center">
