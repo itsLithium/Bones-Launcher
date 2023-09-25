@@ -17,6 +17,8 @@ To install it is simple, you download the zip, unzip it and that's it, you just 
 
 ## ➤ Future work
 
+- App Optimization (It's literally spaghetti code.)
+
 - Create a client (Bones client) where it will have quality of life mods as well as optimization mods to be able to play as God intended.
 
 - Create a tab where you can manage mods and modpacks more easily.
