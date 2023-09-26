@@ -1,6 +1,5 @@
   <img src="./assets/logo2.png" alt="Logo" width="auto" height="auto" />
 </p>
-<h1 align="center">bones-launcher</h1>
 <p align="center">
   <b>A lightweight, virus-free Minecraft launcher, where you can play with your premium account as well as play offline (pirate), presented as an alternative to the classic official launcher, or pirate launchers that contain viruses.</b></br>
   <sub><sub>
@@ -17,6 +16,8 @@ To install it is simple, you download the zip, unzip it and that's it, you just 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#future-work)
 
 ## ➤ Future work
+
+- App Optimization (It's literally spaghetti code.)
 
 - Create a client (Bones client) where it will have quality of life mods as well as optimization mods to be able to play as God intended.
 
