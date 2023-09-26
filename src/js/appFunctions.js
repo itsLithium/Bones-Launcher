@@ -1,12 +1,16 @@
+const { Auth } = require("msmc");
 const { ipcRenderer } = require('electron')
 const maxResBtn = document.getElementById('maxResBtn')
 //const { login } = require('./launch')
 const playbtn = document.getElementById("play-btn")
 const settingsbtn = document.getElementById("settings-btn")
 const stBackbtn = document.getElementById("stbackButton")
-const contentArea = document.getElementById("contentArea")
-const settingsArea = document.getElementById("settingsArea")
+const premiumbtn = document.getElementById("premiumBtn")
+const logoutbtn = document.getElementById('premiumBtnlogout')
 const applyRambtn = document.getElementById("applyRam")
+
+
+let premiumtoken
 
 const ipc = ipcRenderer
 
@@ -142,6 +146,31 @@ settingsbtn.addEventListener('click', () => {
     document.getElementById('settingsArea').style.display = 'block';
 })
 
+premiumbtn.addEventListener('click', () =>{
+    ipc.send('login')
+})
+
+logoutbtn.addEventListener('click', () =>{
+    premiumtoken = ''
+    premiumbtn.style.display = 'block';
+    logoutbtn.style.display = 'none'
+    document.getElementById('username').style.display = 'inline-block';
+    document.getElementById('premiumlabel').style.display = 'none';
+
+})
+
+ipc.on('loged', (event, arg) => {
+    ipc.send('debug', arg.token)
+    premiumname = arg.token.name
+    premiumbtn.style.display = 'none';
+    logoutbtn.style.display = 'block'
+    document.getElementById('username').style.display = 'none';
+    document.getElementById('premiumlabel').style.display = 'inline-block';
+    document.getElementById('premiumlabel').textContent = premiumname;
+    premiumtoken = arg.token
+    
+})
+
 stBackbtn.addEventListener('click', () => {
     document.getElementById('contentArea').style.display = 'block';
     document.getElementById('settingsArea').style.display = 'none';
@@ -155,14 +184,23 @@ applyRambtn.addEventListener('click', () => {
 
 playbtn.addEventListener("click",() => {
     user = document.getElementById('username').value;
-    if(!user){
-        console.log("error")
-    }else{
+    if(user && !premiumtoken){
         version = document.getElementById('dropdown-button').textContent;
         if(!minRam || !maxRam){
             ipc.send('play', {user: user, version: version, minRam: "2G", maxRam: "4G",})
         }else{
             ipc.send('play', {user: user, version: version, minRam: minRam, maxRam: maxRam,})
+        }
+        document.getElementById('play-txt').textContent = "Loading";
+        document.getElementById('btn-container').classList.add('btn-container-disabled')
+        playbtn.disabled = true;
+    }
+    if(premiumtoken){
+        version = document.getElementById('dropdown-button').textContent;
+        if(!minRam || !maxRam){
+            ipc.send('play', {user: user, version: version, minRam: "2G", maxRam: "4G", premiumtoken: premiumtoken})
+        }else{
+            ipc.send('play', {user: user, version: version, minRam: minRam, maxRam: maxRam, premiumtoken: premiumtoken})
         }
         document.getElementById('play-txt').textContent = "Loading";
         document.getElementById('btn-container').classList.add('btn-container-disabled')
@@ -176,20 +214,25 @@ ipc.on('loaded', () => {
     playbtn.disabled = false;
 })
 
+// ipcRenderer.on('load-token', (event, mstoken) => {
+//     premiumtoken = mstoken
+//     ipcRenderer.send('loaded')
+// })
+
 
 ipcRenderer.on('load-input-value', (event, inputValue) => {
     // Load the input value into your input element
     let inputElement = document.getElementById('username')
     inputElement.value = inputValue
-  })
+})
 
 ipcRenderer.on('load-version-value', (event, versionValue) => {
     // Load the input value into your input element
     let inputVersionElement = document.getElementById('dropdown-button')
     inputVersionElement.textContent = versionValue
-  })
+})
 
-  ipcRenderer.on('load-ram-values', (event, minRamValue, maxRamValue) => {
+ipcRenderer.on('load-ram-values', (event, minRamValue, maxRamValue) => {
     if (minRamValue == String && minRamValue != ''){
         document.getElementById('minRam').value = minRamValue
         minRam = minRamValue
@@ -198,4 +241,4 @@ ipcRenderer.on('load-version-value', (event, versionValue) => {
         document.getElementById('maxRam').value = maxRamValue
         maxRam = maxRamValue
     }
-   })
+})

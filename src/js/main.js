@@ -1,19 +1,12 @@
 const { Client, Authenticator } = require("minecraft-launcher-core");
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+const { Auth } = require("msmc");
 const keytar = require('keytar');
 const ipc = ipcMain
 const os = require("os");
 
-let mainWindow
-
 userDirectory = os.homedir();
-
-
-
-
-
-
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -70,9 +63,12 @@ const createWindow = async () => {
     
   }
   
-  const login = (user,version, minRam, maxRam) => {
+  const login = (user, version, minRam, maxRam, premiumtoken) => {
+    if (premiumtoken){
+      runMC(premiumtoken, version, minRam, maxRam)
+    }else if (user){
       Authenticator.getAuth(user).then(token => runMC(token, version, minRam, maxRam))
-    
+    }
   }
   
   const launched = (data) => {
@@ -87,6 +83,14 @@ const createWindow = async () => {
   let versionValue = await keytar.getPassword('bones-launcher', 'version')
   let minRamValue = await keytar.getPassword('bones-launcher', 'minRam')
   let maxRamValue = await keytar.getPassword('bones-launcher', 'maxRam')
+ 
+  
+  // mstoken = loadMCToken('mstoken')
+  // if(mstoken){
+  //   mainWindow.webContents.send('load-token', {mstoken: mstoken})
+  // }
+
+
   console.log(inputValue)
   console.log(versionValue)
   // Send the loaded input value to renderer process
@@ -99,6 +103,10 @@ const createWindow = async () => {
   if (minRamValue && maxRamValue){
     mainWindow.webContents.send('load-ram-values', {minRam: minRamValue, maxRam: maxRamValue})
   }
+
+  ipc.on('debug', (event, arg)=>{
+    console.log(arg)
+  })
   
 
   ipc.on('play', async (event, arg) =>{
@@ -106,12 +114,39 @@ const createWindow = async () => {
     await keytar.setPassword('bones-launcher', 'version', arg.version)
     await keytar.setPassword('bones-launcher', 'minRam', arg.minRam)
     await keytar.setPassword('bones-launcher', 'maxRam', arg.maxRam)
-    login(arg.user, arg.version, arg.minRam, arg.maxRam)
 
+    if(arg.premiumtoken){
+      login(arg.user, arg.version, arg.minRam, arg.maxRam, arg.premiumtoken)
+    }else{
+      login(arg.user, arg.version, arg.minRam, arg.maxRam)
+    }
     //event.sender.send('loaded');
     console.log(arg.user)
   })
 
+  ipc.on('login', async () => {
+    const authManager = new Auth("select_account");
+
+    authManager.launch("raw").then(async xboxManager => {
+      //Generate the Minecraft login token
+      mctoken = await xboxManager.getMinecraft();
+      _name = mctoken.mclc().name
+      // saveMCToken(mctoken.mclc().access_token)
+      mainWindow.webContents.send('loged', {token: mctoken.mclc(), name: _name})
+      console.log(_name)
+    });
+  })
+
+  
+
+
+async function saveMCToken(token) {
+    await keytar.setPassword("bones-launcher", 'mstoken', token);
+}
+
+async function loadMCToken(account) {
+    return await keytar.getPassword("bones-launcher", account);
+}
 
 
 
