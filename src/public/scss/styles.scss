@@ -497,7 +497,6 @@ section > h1 {
 }
 
 .premiumBtn{
-  transform: translateX(5%);
   color: $text-color;
   margin-top: 90px;
   padding-left: 25px;
@@ -510,6 +509,9 @@ section > h1 {
   text-align: center;
 }
 
+.logout{
+  transform: translateX(35%);
+}
 
 .stg-text{
   color: $text-color;

@@ -10473,7 +10473,6 @@ section > h1, section > .h1 {
 }
 
 .premiumBtn {
-  transform: translateX(5%);
   color: #949AA7;
   margin-top: 90px;
   padding-left: 25px;
@@ -10484,6 +10483,10 @@ section > h1, section > .h1 {
   font-weight: bold;
   border-bottom: 2px solid transparent;
   text-align: center;
+}
+
+.logout {
+  transform: translateX(35%);
 }
 
 .stg-text {
