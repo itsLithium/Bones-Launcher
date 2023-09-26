@@ -39,8 +39,7 @@ jspm_packages/
 #mc directory
 .minecraft/
 
-bones-launcher-win32-x64/
-bones-launcher-win32-x64.zip
+Bones Launcher-win32-x64
 
 # TypeScript v1 declaration files
 typings/

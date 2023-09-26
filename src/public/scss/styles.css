@@ -10391,7 +10391,7 @@ section > h1, section > .h1 {
   right: 15px;
 }
 
-.settings-btn {
+.icon-btn {
   color: #949AA7;
   border: none;
   padding: 10px;
@@ -10399,17 +10399,18 @@ section > h1, section > .h1 {
   text-align: center;
 }
 
-.settings-btn > i {
+.icon-btn > i {
   font-size: 25px;
 }
 
-.ripple:hover > i {
+.btn-effect:hover > i {
   color: #ef4089;
   font-size: 27px;
 }
 
-.ripple:active > i {
-  font-size: 25px;
+.btn-effect:active > i {
+  color: #bc326b;
+  transition: 0.2s;
 }
 
 .main-content {
